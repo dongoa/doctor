@@ -15,7 +15,7 @@ async def analyze_suture_points(image_path: str):
     """
     
     # Configuration for Volcengine Ark
-    API_KEY = "fc06096d-7fed-4a7c-a779-358d6bbe61b3"
+    API_KEY = "404f2706-2817-453f-85c1-fcbf9e14ad6f"
     BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
     MODEL_ID = "doubao-seed-1-6-251015"
     

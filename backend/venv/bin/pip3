@@ -1,4 +1,4 @@
-#!/var/www/suture-ai/backend/venv/bin/python3
+#!/Users/aodong/Documents/finish/doctor/doctor/backend/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

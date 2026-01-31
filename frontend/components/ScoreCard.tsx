@@ -131,31 +131,6 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ report }) => {
         ))}
       </div>
 
-      {/* AI 原始结果日志块 */}
-      {report.raw_ai_result && (
-        <div className="rounded-3xl bg-slate-800 p-8 shadow-2xl border border-slate-700">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-2">
-              <div className="flex space-x-1.5">
-                <div className="w-3 h-3 bg-amber-500/30 rounded-full"></div>
-                <div className="w-3 h-3 bg-slate-500/30 rounded-full"></div>
-                <div className="w-3 h-3 bg-slate-500/30 rounded-full"></div>
-              </div>
-              <span className="ml-4 text-amber-400/90 font-mono text-xs font-bold uppercase tracking-widest">AI 模型原始返回 (日志)</span>
-            </div>
-            <button
-              onClick={() => report.raw_ai_result && navigator.clipboard.writeText(JSON.stringify(report.raw_ai_result, null, 2))}
-              className="text-xs font-bold text-slate-400 hover:text-amber-300 transition-colors bg-white/5 px-4 py-2 rounded-lg"
-            >
-              复制
-            </button>
-          </div>
-          <pre className="font-mono text-[11px] text-amber-200/90 overflow-x-auto max-h-64 custom-scrollbar leading-relaxed whitespace-pre-wrap break-all">
-            {JSON.stringify(report.raw_ai_result, null, 2)}
-          </pre>
-        </div>
-      )}
-
       {/* RAW JSON - Professional Code Block */}
       <div className="rounded-3xl bg-slate-900 p-8 shadow-2xl">
          <div className="flex items-center justify-between mb-6">

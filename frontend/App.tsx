@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { AppState, AssessmentReport } from './types';
-import { analyzeSutureImage, getMockReport } from './services/geminiService';
+import { analyzeSutureImage, getMockReport } from './services/evaluationService';
 import FileUpload from './components/FileUpload';
 import ScoreCard from './components/ScoreCard';
 

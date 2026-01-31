@@ -7,8 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from backend directory (不依赖当前工作目录)
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
 from services.evaluation_service import evaluate_suture
 
@@ -26,6 +26,13 @@ app.add_middleware(
 # Temp directory（使用绝对路径，避免工作目录变化导致读图失败）
 TEMP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp")
 os.makedirs(TEMP_DIR, exist_ok=True)
+
+
+@app.get("/api/health")
+def health():
+    """用于确认后端已启动，可 GET http://localhost:8000/api/health"""
+    return {"status": "ok", "service": "SutureAI API"}
+
 
 @app.post("/api/evaluate")
 async def evaluate_image(file: UploadFile = File(...)):
@@ -51,7 +58,9 @@ async def evaluate_image(file: UploadFile = File(...)):
     except Exception as e:
         import traceback
         traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+        # 返回异常类型和消息，便于前端/Network 查看 500 原因
+        detail = f"{type(e).__name__}: {e}"
+        raise HTTPException(status_code=500, detail=detail)
 
 if __name__ == "__main__":
     import uvicorn
