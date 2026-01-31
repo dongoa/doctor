@@ -1,0 +1,7 @@
+{
+  "name": "智能缝合技能AI评估系统",
+  "description": "基于双模态AI的外科缝合技能自动量化评估工具，支持多伤口识别、刻度尺校准及结构化JSON报告输出。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
